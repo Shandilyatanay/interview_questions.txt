@@ -1,1 +1,41 @@
 
+/*
+1. Reverse words of a string in frequency of 4
+        Ex: input: “Hello how are you doing these days in national capital Delhi”
+        Output: “you are how Hello in days these doing Delhi capital national”*/
+
+public class test {
+    public static void main(String[] args){
+        String st1 = "Hello how are you doing these days in national capital Delhi";
+        String[] ar = st1.split(" ");
+        int outerLimit;
+        if(ar.length%4==0)
+            outerLimit = ar.length/4;
+        else
+            outerLimit = (ar.length/4)+1;
+        String res = "";
+        int l=0 , m=3;
+
+        for(int i=0; i<outerLimit; i++){
+            int x = m;
+            if((ar.length-(m+1)) % 4>0){
+                for(int j=m; j>=l;j--){
+                    res = res+ar[x]+" ";
+                    x--;
+                }
+            }
+            else {
+                x= ar.length-1;
+                for(int j=ar.length-1; j>=l;j--){
+                    res = res+ar[x]+" ";
+                    x--;
+                }
+            }
+
+            l=l+4;
+            m=m+4;
+        }
+
+        System.out.println(res);
+    }
+}
